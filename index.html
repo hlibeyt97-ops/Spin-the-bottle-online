@@ -2,48 +2,58 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<title>Spinnthebottle.com - Online</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spinnthebottle.com</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{height:100vh;background:#d2a06a;font-family:system-ui;display:flex;flex-direction:column;overflow:hidden}
-.header{height:48px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 12px}
-.table{flex:1;background:radial-gradient(ellipse at center,#f2d09b 0%,#e6b97e 55%,#c98a4a 100%);position:relative}
-.player{position:absolute;width:70px;text-align:center}
-.player img{width:60px;height:60px;border-radius:12px;border:2px solid #fff;object-fit:cover}
-.player span{font-size:10px;background:rgba(0,0,0,.6);color:#fff;padding:2px 4px;border-radius:6px;display:block;margin-top:2px}
-.center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;background:radial-gradient(circle,#ffe7b6,#d9a46a);border-radius:40%;display:flex;align-items:center;justify-content:center}
-#bottle{width:50px;transition:transform 3.2s cubic-bezier(.15,.85,.25,1)}
-#hint{position:absolute;top:78%;left:50%;transform:translateX(-50%);background:#fff;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700}
-.bottom{height:40%;background:#fff;display:flex;flex-direction:column}
-.gifts{display:flex;gap:6px;padding:6px;overflow:auto;border-bottom:1px solid #eee}
-.gifts div{background:#f5f5f5;padding:6px 10px;border-radius:12px;font-size:13px}
-.chat{flex:1;overflow:auto;padding:6px;font-size:13px}
-.inputRow{display:flex;padding:6px;gap:6px;border-top:1px solid #eee}
-.inputRow input{flex:1;background:#f0f0f0;border:1px solid #ddd;border-radius:20px;padding:10px 14px}
-.inputRow button{background:#ff7a00;color:#fff;border:none;width:36px;height:36px;border-radius:50%}
-#login{position:absolute;inset:0;background:radial-gradient(#f2d09b,#c98a4a);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center}
-#login input{padding:12px 16px;border-radius:999px;border:none;margin-top:10px;width:200px;text-align:center}
-#login button{background:#fff;border:none;padding:12px 20px;border-radius:999px;font-weight:800;margin-top:12px}
-#modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:16px;padding:14px;width:180px;text-align:center;display:none;z-index:20;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{height:100vh;background:#d19a5e;font-family:Arial;display:flex;flex-direction:column}
+.top{height:44px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-weight:700}
+.board{flex:1;position:relative;background:radial-gradient(ellipse at center,#f3d09a 0%,#e3b87d 45%,#c48a4d 100%)}
+.p{position:absolute;width:64px;text-align:center;transform:translate(-50%,-50%)}
+.p img{width:58px;height:58px;border-radius:14px;border:2px solid #fff;object-fit:cover;display:block;margin:0 auto}
+.p b{font-size:11px;background:#4a3722;color:#fff;padding:2px 8px;border-radius:10px;display:inline-block;margin-top:4px}
+.oval{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58%;height:62%;background:radial-gradient(ellipse at center,#fde1b2 0%,#e5b785 70%);border-radius:50%;box-shadow:inset 0 0 30px rgba(0,0,0,.15)}
+.bottle{position:absolute;left:50%;top:50%;width:22px;height:90px;margin-left:-11px;margin-top:-45px;background:linear-gradient(#2d7a2d,#1a4d1a);border-radius:10px 10px 4px 4px;transform-origin:50% 50%;transition:transform 3s cubic-bezier(.2,.8,.2,1);z-index:5;display:flex;align-items:center;justify-content:center}
+.bottle::before{content:'';position:absolute;top:-14px;width:10px;height:16px;background:#1a4d1a;border-radius:4px}
+.bottle::after{content:'🧴';position:absolute;font-size:22px;top:20px}
+.spinBtn{position:absolute;left:50%;top:63%;transform:translateX(-50%);background:#fff;padding:7px 18px;border-radius:20px;font-weight:800;font-size:14px;z-index:6;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.bottom{height:38%;background:#fff;display:flex;flex-direction:column}
+.gifts{display:flex;gap:8px;padding:8px;overflow:auto}
+.gifts span{background:#f3f3f3;padding:7px 10px;border-radius:16px}
+.chat{flex:1;padding:8px;font-size:14px;overflow:auto;border-top:1px solid #eee;border-bottom:1px solid #eee}
+.input{display:flex;padding:8px;gap:8px}
+.input input{flex:1;background:#f0f0f0;border:none;padding:10px 14px;border-radius:20px}
+.input button{background:#ff7b00;color:#fff;border:none;width:36px;height:36px;border-radius:50%}
 </style>
 </head>
 <body>
-<div class="header"><b>🍾 Spinnthebottle.com</b><div>Masa 1905</div></div>
-<div class="table" id="table">
-<div id="login"><h2>🍾 Spinnthebottle.com</h2><p>Putulka.com kimi</p><input id="nameInp" placeholder="Adini yaz"><button onclick="start()">Oyuna Gir</button></div>
-<div class="center" onclick="spin()"><img id="bottle" src="https://i.imgur.com/QkZ8vM9.png"><div id="hint">Cevir!</div></div>
-<div id="modal"><img id="mImg" width="70" style="border-radius:12px"><h3 id="mName"></h3><div id="timer" style="font-size:22px;font-weight:800">9</div><button onclick="closeM()" style="margin-top:8px;padding:6px 12px;border-radius:10px;border:none;background:#eee">Bagla</button></div>
+<div class="top"><span>🍾 Spinnthebottle.com</span><span>Masa 1905</span></div>
+<div class="board" id="board">
+<div class="oval"></div>
+<div class="bottle" id="bot" onclick="spin()"></div>
+<div class="spinBtn" onclick="spin()">Cevir!</div>
 </div>
-<div class="bottom"><div class="gifts"><div>🎁</div><div>🌹</div><div>👑</div><div>💋</div><div>🍓</div><div>🍒</div></div><div class="chat" id="chat"><div>Sistem: Xos geldin!</div></div><div class="inputRow"><input id="msgInp" placeholder="Mesaj"><button onclick="send()">></button></div></div>
+<div class="bottom">
+<div class="gifts"><span>🎁 10</span><span>🌹 5</span><span>👑 50</span><span>💋 15</span><span>🍓 10</span><span>🍒 10</span></div>
+<div class="chat" id="chat">Sistem: Xoş gəldin! Masa 1905</div>
+<div class="input"><input id="msg" placeholder="Mesaj yaz..."><button onclick="send()">></button></div>
+</div>
 <script>
-let myName='';let players=[];let rot=0;let spinning=false;let selected=null;
-const defaults=[{id:1,name:'Alya',img:'https://i.pravatar.cc/150?img=9'},{id:2,name:'Tomris',img:'https://i.pravatar.cc/150?img=32'},{id:3,name:'Roy',img:'https://i.pravatar.cc/150?img=11'},{id:4,name:'Nick',img:'https://i.pravatar.cc/150?img=15'},{id:5,name:'Qiz',img:'https://i.pravatar.cc/150?img=22'},{id:6,name:'Amara',img:'https://i.pravatar.cc/150?img=26'}];
-function start(){let v=document.getElementById('nameInp').value.trim();if(!v)return alert('Ad yaz');myName=v;document.getElementById('login').style.display='none';players=[{id:0,name:myName,img:'https://i.pravatar.cc/150?img=5',me:true},...defaults];render();}
-function render(){let t=document.getElementById('table');t.querySelectorAll('.player').forEach(e=>e.remove());players.forEach((p,i)=>{let tot=players.length;let ang=(i/tot)*360-90;let rad=ang*Math.PI/180;let x=50+Math.cos(rad)*36;let y=50+Math.sin(rad)*36;let d=document.createElement('div');d.className='player';d.style.left=x+'%';d.style.top=y+'%';d.innerHTML=`<img src="${p.img}"><span>${p.name}</span>`;t.appendChild(d);});}
-function spin(){if(spinning)return;spinning=true;let b=document.getElementById('bottle');let others=players.filter(p=>!p.me);selected=others[Math.floor(Math.random()*others.length)];let idx=players.indexOf(selected);let target=(idx/players.length)*360-90+90;rot+=1080+Math.random()*360+target;b.style.transform=`rotate(${rot}deg)`;setTimeout(()=>{document.getElementById('mImg').src=selected.img;document.getElementById('mName').innerText=selected.name;document.getElementById('modal').style.display='block';spinning=false;},3200);}
-function closeM(){document.getElementById('modal').style.display='none';}
-function send(){let i=document.getElementById('msgInp');if(!i.value)return;let c=document.getElementById('chat');let d=document.createElement('div');d.innerHTML=`<b>${myName}:</b> ${i.value}`;c.appendChild(d);c.scrollTop=c.scrollHeight;i.value='';}
+const users=[{n:'Alya',img:'https://i.pravatar.cc/150?img=32'},{n:'Tomris',img:'https://i.pravatar.cc/150?img=23'},{n:'Roy',img:'https://i.pravatar.cc/150?img=12'},{n:'Nick',img:'https://i.pravatar.cc/150?img=15'},{n:'Amara',img:'https://i.pravatar.cc/150?img=26'},{n:'Qiz',img:'https://i.pravatar.cc/150?img=9'},{n:'Ali',img:'https://i.pravatar.cc/150?img=11'}];
+const board=document.getElementById('board');
+function place(){
+users.forEach((u,i)=>{
+let a=(i/users.length)*360-90; let r=a*Math.PI/180;
+let x=50+Math.cos(r)*35; let y=50+Math.sin(r)*34;
+let d=document.createElement('div'); d.className='p'; d.style.left=x+'%'; d.style.top=y+'%';
+d.innerHTML=`<img src="${u.img}"><b>${u.n}</b>`; board.appendChild(d);
+});}
+place();
+let rot=0, busy=false;
+function spin(){if(busy)return; busy=true; rot+=900+Math.random()*720;
+document.getElementById('bot').style.transform=`translate(-50%,-50%) rotate(${rot}deg)`;
+setTimeout(()=>{busy=false; let w=users[Math.floor(Math.random()*users.length)]; let c=document.getElementById('chat'); c.innerHTML+=`<div><b>Sistem:</b> Şüşə ${w.n} -ni göstərdi!</div>`; c.scrollTop=c.scrollHeight;},3100);}
+function send(){let i=document.getElementById('msg'); if(!i.value)return; let c=document.getElementById('chat'); c.innerHTML+=`<div><b>Sən:</b> ${i.value}</div>`; i.value=''; c.scrollTop=c.scrollHeight;}
 </script>
 </body>
 </html>
