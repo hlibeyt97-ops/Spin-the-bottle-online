@@ -1,17 +1,1 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler
-
-TOKEN = "9148798446:AAEGlWxOrv9xeSOPZXp9hIydVQvQ20tBrrw"
-
-async def spin(update, context):
-    keyboard = [[
-        InlineKeyboardButton("🍾 Butulkanı Fırlat", web_app={"url": "https://senin-saytin.com/bottle.html"})
-    ]]
-    await update.message.reply_text(
-        "Sənin Virtual Butulka Oyunun 🍾\nButulkanı Fırlatmaq Üçün Bas 👇",
-        reply_markup=InlineKeyboardMarkup(keyboard)
-    )
-
-app = Application.builder().token(TOKEN).build()
-app.add_handler(CommandHandler("spin", spin))
-app.run_polling()
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
