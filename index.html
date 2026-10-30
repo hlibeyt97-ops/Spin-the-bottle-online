@@ -2,58 +2,50 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spinnthebottle.com</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spinnthebottle.com - Masa 1905</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{height:100vh;background:#d19a5e;font-family:Arial;display:flex;flex-direction:column}
-.top{height:44px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-weight:700}
-.board{flex:1;position:relative;background:radial-gradient(ellipse at center,#f3d09a 0%,#e3b87d 45%,#c48a4d 100%)}
-.p{position:absolute;width:64px;text-align:center;transform:translate(-50%,-50%)}
-.p img{width:58px;height:58px;border-radius:14px;border:2px solid #fff;object-fit:cover;display:block;margin:0 auto}
-.p b{font-size:11px;background:#4a3722;color:#fff;padding:2px 8px;border-radius:10px;display:inline-block;margin-top:4px}
-.oval{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58%;height:62%;background:radial-gradient(ellipse at center,#fde1b2 0%,#e5b785 70%);border-radius:50%;box-shadow:inset 0 0 30px rgba(0,0,0,.15)}
-.bottle{position:absolute;left:50%;top:50%;width:22px;height:90px;margin-left:-11px;margin-top:-45px;background:linear-gradient(#2d7a2d,#1a4d1a);border-radius:10px 10px 4px 4px;transform-origin:50% 50%;transition:transform 3s cubic-bezier(.2,.8,.2,1);z-index:5;display:flex;align-items:center;justify-content:center}
-.bottle::before{content:'';position:absolute;top:-14px;width:10px;height:16px;background:#1a4d1a;border-radius:4px}
-.bottle::after{content:'🧴';position:absolute;font-size:22px;top:20px}
-.spinBtn{position:absolute;left:50%;top:63%;transform:translateX(-50%);background:#fff;padding:7px 18px;border-radius:20px;font-weight:800;font-size:14px;z-index:6;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.bottom{height:38%;background:#fff;display:flex;flex-direction:column}
-.gifts{display:flex;gap:8px;padding:8px;overflow:auto}
-.gifts span{background:#f3f3f3;padding:7px 10px;border-radius:16px}
-.chat{flex:1;padding:8px;font-size:14px;overflow:auto;border-top:1px solid #eee;border-bottom:1px solid #eee}
-.input{display:flex;padding:8px;gap:8px}
-.input input{flex:1;background:#f0f0f0;border:none;padding:10px 14px;border-radius:20px}
-.input button{background:#ff7b00;color:#fff;border:none;width:36px;height:36px;border-radius:50%}
+body{height:100vh;background:#c38a4a;font-family:Arial;overflow:hidden;display:flex;flex-direction:column}
+.header{height:52px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 14px}
+.board{flex:1;position:relative;background:radial-gradient(ellipse at center,#f2d09a 0%,#d49a5a 60%,#b77a3a 100%)}
+.oval{position:absolute;left:50%;top:50%;width:78%;height:68%;transform:translate(-50%,-52%);background:radial-gradient(ellipse at center,#ffe7b6 0%,#e6b37a 60%);border-radius:50%}
+.player{position:absolute;width:72px;text-align:center;transform:translate(-50%,-50%)}
+.player img{width:64px;height:64px;border-radius:16px;border:3px solid #fff;object-fit:cover}
+.player b{background:#3d2b1a;color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;display:inline-block;margin-top:4px}
+#bottle{position:absolute;left:50%;top:50%;width:38px;height:120px;margin-left:-19px;margin-top:-60px;background:linear-gradient(90deg,#1a3d1a,#4caf50,#1a3d1a);border-radius:18px 18px 8px 8px;transition:transform 3.4s cubic-bezier(.12,.8,.18,1);z-index:5}
+#bottle::before{content:'';position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:18px;height:22px;background:#1a3d1a;border-radius:6px}
+#bottle::after{content:'BRUT';position:absolute;top:34px;left:2px;right:2px;height:28px;background:#fff;color:#2e7d32;font-size:7px;font-weight:800;display:flex;align-items:center;justify-content:center;border-radius:3px}
+.hint{position:absolute;left:50%;top:62%;transform:translateX(-50%);background:#fff;padding:8px 18px;border-radius:999px;font-weight:800;z-index:6}
+.bottom{height:34%;background:#fff;display:flex;flex-direction:column}
+.gifts{display:flex;gap:8px;padding:10px;overflow:auto;border-bottom:1px solid #eee}
+.chat{flex:1;padding:8px 12px;overflow:auto;font-size:13px}
+.input{display:flex;padding:8px;gap:8px;border-top:1px solid #eee}
+.input input{flex:1;background:#f0f2f5;border:none;padding:11px 16px;border-radius:999px}
+.input button{width:38px;height:38px;border-radius:50%;background:#ff7a00;color:#fff;border:none}
+#login{position:absolute;inset:0;background:radial-gradient(ellipse at center,#f3d09a 0%,#c98a4a 100%);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#login input{padding:14px 18px;border-radius:999px;border:none;width:220px;text-align:center;margin-top:14px}
+#login button{padding:12px 24px;border-radius:999px;border:none;background:#3d2b1a;color:#fff;font-weight:800;margin-top:12px}
+#popup{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);background:#fff;border-radius:22px;padding:18px;width:200px;text-align:center;z-index:15;box-shadow:0 20px 60px rgba(0,0,0,.4);display:none}
+#popup.show{display:block}
+#popup img{width:84px;height:84px;border-radius:18px;object-fit:cover}
+#popup .count{font-size:32px;font-weight:800}
 </style>
 </head>
 <body>
-<div class="top"><span>🍾 Spinnthebottle.com</span><span>Masa 1905</span></div>
+<div class="header"><b>🍾 Spinnthebottle.com</b><span>Masa 1905</span></div>
 <div class="board" id="board">
 <div class="oval"></div>
-<div class="bottle" id="bot" onclick="spin()"></div>
-<div class="spinBtn" onclick="spin()">Cevir!</div>
+<div id="login"><h1>🍾 Spinnthebottle.com</h1><p>Putulka kimi</p><input id="nameInp" placeholder="Adini yaz"><button onclick="enterGame()">Oyuna Gir</button></div>
+<div id="bottle" onclick="spin()"></div>
+<div class="hint" onclick="spin()">CEVIR!</div>
+<div id="popup"><img id="popImg" src=""><h3 id="popName"></h3><div class="count" id="popCount">9</div><button onclick="closePop()" style="margin-top:8px;background:#f0f0f0;border:none;padding:8px 18px;border-radius:999px">Bagla</button></div>
 </div>
 <div class="bottom">
 <div class="gifts"><span>🎁 10</span><span>🌹 5</span><span>👑 50</span><span>💋 15</span><span>🍓 10</span><span>🍒 10</span></div>
-<div class="chat" id="chat">Sistem: Xoş gəldin! Masa 1905</div>
-<div class="input"><input id="msg" placeholder="Mesaj yaz..."><button onclick="send()">></button></div>
+<div class="chat" id="chat">Sistem: Xos geldin!</div>
+<div class="input"><input id="msgInp" placeholder="Mesaj yaz..."><button onclick="sendMsg()">➤</button></div>
 </div>
 <script>
-const users=[{n:'Alya',img:'https://i.pravatar.cc/150?img=32'},{n:'Tomris',img:'https://i.pravatar.cc/150?img=23'},{n:'Roy',img:'https://i.pravatar.cc/150?img=12'},{n:'Nick',img:'https://i.pravatar.cc/150?img=15'},{n:'Amara',img:'https://i.pravatar.cc/150?img=26'},{n:'Qiz',img:'https://i.pravatar.cc/150?img=9'},{n:'Ali',img:'https://i.pravatar.cc/150?img=11'}];
-const board=document.getElementById('board');
-function place(){
-users.forEach((u,i)=>{
-let a=(i/users.length)*360-90; let r=a*Math.PI/180;
-let x=50+Math.cos(r)*35; let y=50+Math.sin(r)*34;
-let d=document.createElement('div'); d.className='p'; d.style.left=x+'%'; d.style.top=y+'%';
-d.innerHTML=`<img src="${u.img}"><b>${u.n}</b>`; board.appendChild(d);
-});}
-place();
-let rot=0, busy=false;
-function spin(){if(busy)return; busy=true; rot+=900+Math.random()*720;
-document.getElementById('bot').style.transform=`translate(-50%,-50%) rotate(${rot}deg)`;
-setTimeout(()=>{busy=false; let w=users[Math.floor(Math.random()*users.length)]; let c=document.getElementById('chat'); c.innerHTML+=`<div><b>Sistem:</b> Şüşə ${w.n} -ni göstərdi!</div>`; c.scrollTop=c.scrollHeight;},3100);}
-function send(){let i=document.getElementById('msg'); if(!i.value)return; let c=document.getElementById('chat'); c.innerHTML+=`<div><b>Sən:</b> ${i.value}</div>`; i.value=''; c.scrollTop=c.scrollHeight;}
-</script>
-</body>
-</html>
+let myName='';let all=[];let rot=0;let busy=false;let tmr=null;
+let data=[{n:'Alya',img:'https://i.pravatar.cc/150?img=23'},{n:'Tomris',img:'https://i.pravatar.cc/150?img=32'},{n:'Amara',img:'https://i.pravatar.cc/150?img=26'},{n:'Qiz',img:'https://i.pravatar.cc/150?img=9'},{n:'Nick',img:'https://i.pravatar.cc/150?img=15'},{n:'Roy',img:'https://i.pravatar.cc/150?img=12'},{n:'Ali',img:'https
